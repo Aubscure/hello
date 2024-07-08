@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .content {
+            text-align: center;
+        }
+        .title {
+            font-size: 2rem;
+        }
+        .question {
+            margin-top: 2rem;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1; /* Ensure buttons are above other content */
+        }
+        .button {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem; /* Add margin to create spacing */
+            background-color: #3490dc;
+            color: white;
+            border-radius: 0.3rem;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #2779bd;
+        }
+        .no-button {
+            background-color: #e3342f;
+            position: absolute; /* Ensure absolute positioning */
+            left: calc(50% + 1.5rem); /* Adjust to position beside 'Yes' button */
+            top: calc(50% - 0rem); /* Adjust for vertical alignment */
+            transform: translate(-50%, -50%); /* Center the button */
+            z-index: 0; /* Ensure 'No' button is behind other content */
+        }
+        .no-button:hover {
+            background-color: #cc1f1a;
+        }
+        .yes-button {
+            margin-right: 100px;
+            text-decoration: none; /* Remove underline */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 class="title">I LOVE YOU!</h1>
+            <p class="question">Do you love me too?</p>
+            <div class="buttons">
+                <!-- 'Yes' button -->
+                <a href="./yes.html" class="button yes-button">Yes</a>
+
+                <!-- 'No' button -->
+                <button onclick="placeNoButton()" class="button no-button">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for placing 'No' button randomly
+        function placeNoButton() {
+            const noButton = document.querySelector('.no-button');
+            const buttonWidth = noButton.offsetWidth;
+            const buttonHeight = noButton.offsetHeight;
+            const containerWidth = document.querySelector('.container').offsetWidth;
+            const containerHeight = document.querySelector('.container').offsetHeight;
+            const maxLeft = containerWidth - buttonWidth;
+            const maxTop = containerHeight - buttonHeight;
+            const randomLeft = Math.floor(Math.random() * maxLeft);
+            const randomTop = Math.floor(Math.random() * maxTop);
+            noButton.style.left = `${randomLeft}px`;
+            noButton.style.top = `${randomTop}px`;
+        }
+    </script>
+</body>
+</html>
